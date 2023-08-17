@@ -5,7 +5,16 @@ const pressed = () => {
   console.log("pressed");
 };
 
-const ActivityFeedScreen = () => {
+const ActivityFeedScreen = ({
+  navigation
+}) => {
+  const completeRegistration = () => {
+    // Close the popup window
+    navigation.goBack(); // Open the homepage
+
+    navigation.navigate("Home");
+  };
+
   return <ScrollView>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
@@ -145,8 +154,8 @@ const styles = StyleSheet.create({
 export default ActivityFeedScreen;
 
 const Post = props => {
-  return <TouchableHighlight onPress={props.onPress} style={postStyles.galleryPost} underlayColor='#DDDDDD'>
-        <Image style={postStyles.editIcon} source={require("./assets/edit.png")} />
+  return <TouchableHighlight onPress={props.onPress} style={postStyles.galleryPost} underlayColor="#DDDDDD">
+      <Image style={postStyles.editIcon} source={require("./assets/edit.png")} />
     </TouchableHighlight>;
 };
 
@@ -168,7 +177,7 @@ const postStyles = StyleSheet.create({
 });
 
 const ProfileImage = props => {
-  return <TouchableHighlight onPress={props.onPress} underlayColor='#DDDDDD'>
+  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
       <View style={imageStyles.container}>
         <Image style={imageStyles.image} resizeMode="contain" source={require("./assets/edit.png")} />
       </View>
